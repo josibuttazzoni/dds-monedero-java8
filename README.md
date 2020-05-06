@@ -19,6 +19,42 @@ Tenés seis tareas:
  5. :arrow_up: Subí todos los cambios a tu _fork_
  
 
+ ### Code Smells Identificados:
+
+1. Misplaced method (En este caso sirve para no romper el encapsulamiento)
+```java
+ public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) {
+    Movimiento movimiento = new Movimiento(fecha, cuanto, esDeposito);
+    movimientos.add(movimiento);
+  }
+```
+2. Duplicated code 
+```java
+ public Cuenta() {}
+ public Cuenta(double montoInicial) {}
+```
+3. Long method
+```java
+public void poner(double cuanto) {}
+public void sacar(double cuanto) {}
+```
+4. Long parameter list
+```java
+public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) {}
+```
+5. Type test (Podrian existir las clases Deposito y Extraccion que hereden de una abstracta Movimiento)
+6. Message Chains (Se rompe el encapsulamiento)
+```java
+ public void agregateA(Cuenta cuenta) {
+    cuenta.setSaldo(calcularValor(cuenta));
+    cuenta.agregarMovimiento(fecha, monto, esDeposito);
+  }
+```
+7. Primitive obsession (variable boolean esDeposito en la clase Movimiento)
+
+
+
+
   
 
 
