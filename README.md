@@ -18,8 +18,9 @@ Tenés seis tareas:
  4. :rescue_worker_helmet: Corregí smells, de a un commit por vez. 
  5. :arrow_up: Subí todos los cambios a tu _fork_
  
+ 
 
- ### Code Smells Identificados:
+ ## Code Smells Identificados:
 
 1. Misplaced method (En este caso sirve para no romper el encapsulamiento)
 ```java
