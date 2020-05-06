@@ -1,5 +1,7 @@
 package dds.monedero.model;
 
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,24 +19,18 @@ public class MonederoTest {
   }
 
   @Test
-  public void Poner() {
+  public void ElSaldoEs1500LuegoDePonerDichoMonto() {
     cuenta.poner(1500);
+    Assert.assertEquals(1500.0,cuenta.getSaldo());
   }
 
   @Test(expected = MontoNegativoException.class)
-  public void PonerMontoNegativo() {
+  public void AlIntentarPonerUnMontoNegativoSeLanzaExcepcionMontoNegativo() {
     cuenta.poner(-1500);
   }
 
-  @Test
-  public void TresDepositos() {
-    cuenta.poner(1500);
-    cuenta.poner(456);
-    cuenta.poner(1900);
-  }
-
   @Test(expected = MaximaCantidadDepositosException.class)
-  public void MasDeTresDepositos() {
+  public void AlHacer3DepositosSeLanzaExcepcionMaximaCantidadDepositos() {
     cuenta.poner(1500);
     cuenta.poner(456);
     cuenta.poner(1900);
@@ -42,19 +38,19 @@ public class MonederoTest {
   }
 
   @Test(expected = SaldoMenorException.class)
-  public void ExtraerMasQueElSaldo() {
+  public void AlIntentarSacarMasDineroDelSaldoSeLanzaExcepcionSaldoMenor() {
     cuenta.setSaldo(90);
     cuenta.sacar(1001);
   }
 
   @Test(expected = MaximoExtraccionDiarioException.class)
-  public void ExtraerMasDe1000() {
+  public void AlIntentarSacarMasDelMaximoSeLanzaExcepcionMaximoExtraccionDiaria() {
     cuenta.setSaldo(5000);
     cuenta.sacar(1001);
   }
 
   @Test(expected = MontoNegativoException.class)
-  public void ExtraerMontoNegativo() {
+  public void AlIntentarSacarUnMontoNegativoSeLanzaExcepcionMontoNegativo() {
     cuenta.sacar(-500);
   }
 
