@@ -20,7 +20,7 @@ public class MonederoTest {
   @Test
   public void ElSaldoEs1500LuegoDePonerDichoMonto() {
     cuenta.depositar(1500);
-    Assert.assertEquals(1500.0,cuenta.getSaldo());
+    Assert.assertEquals(1500,cuenta.getSaldo(),0);
   }
 
   @Test(expected = MontoNegativoException.class)
